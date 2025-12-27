@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect, KeyboardEvent } from 'react';
+import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { closeExplanation, saveExplanation } from '../store/treeSlice';
 import './ExplanationModal.css';
 
 export default function ExplanationModal() {
-  const dispatch = useDispatch();
-  const { selectedNode, modalOpen } = useSelector((state) => state.tree);
+  const dispatch = useAppDispatch();
+  const { selectedNode, modalOpen } = useAppSelector((state) => state.tree);
   const [explanation, setExplanation] = useState('');
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function ExplanationModal() {
     dispatch(closeExplanation());
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
       handleClose();
     } else if (e.key === 's' && (e.metaKey || e.ctrlKey)) {

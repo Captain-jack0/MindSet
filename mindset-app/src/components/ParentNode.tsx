@@ -1,19 +1,25 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, KeyboardEvent, MouseEvent } from 'react';
+import { useAppDispatch } from '../store/hooks';
 import { updateNode, addChild } from '../store/treeSlice';
+import { isLeafNode } from '../utils';
+import type { TreeNode } from '../types';
 import ChildNode from './ChildNode';
 import LeafNode from './LeafNode';
 import './ParentNode.css';
 
-export default function ParentNode({ node }) {
-  const dispatch = useDispatch();
+interface ParentNodeProps {
+  node: TreeNode;
+}
+
+export default function ParentNode({ node }: ParentNodeProps) {
+  const dispatch = useAppDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(node.title);
   const [showActions, setShowActions] = useState(false);
 
   const hasChildren = node.children && node.children.length > 0;
 
-  const handleDoubleClick = (e) => {
+  const handleDoubleClick = (e: MouseEvent) => {
     e.stopPropagation();
     setIsEditing(true);
     setEditTitle(node.title);
@@ -26,7 +32,7 @@ export default function ParentNode({ node }) {
     setIsEditing(false);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleTitleSave();
     } else if (e.key === 'Escape') {
@@ -35,13 +41,9 @@ export default function ParentNode({ node }) {
     }
   };
 
-  const handleAddChild = (e) => {
+  const handleAddChild = (e: MouseEvent) => {
     e.stopPropagation();
     dispatch(addChild({ parentId: node.id }));
-  };
-
-  const isLeafChild = (child) => {
-    return !child.children || child.children.length === 0;
   };
 
   return (
@@ -92,7 +94,7 @@ export default function ParentNode({ node }) {
           {node.children.map((child) => (
             <div key={child.id} className="parent-child-item">
               <div className="branch-connector"></div>
-              {isLeafChild(child) ? (
+              {isLeafNode(child) ? (
                 <LeafNode node={child} />
               ) : (
                 <ChildNode node={child} level={1} />

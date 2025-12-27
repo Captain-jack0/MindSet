@@ -1,11 +1,18 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, KeyboardEvent, MouseEvent } from 'react';
+import { useAppDispatch } from '../store/hooks';
 import { updateNode, addChild, deleteNode } from '../store/treeSlice';
+import { isLeafNode } from '../utils';
+import type { TreeNode } from '../types';
 import LeafNode from './LeafNode';
 import './ChildNode.css';
 
-export default function ChildNode({ node, level = 1 }) {
-  const dispatch = useDispatch();
+interface ChildNodeProps {
+  node: TreeNode;
+  level?: number;
+}
+
+export default function ChildNode({ node, level = 1 }: ChildNodeProps) {
+  const dispatch = useAppDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(node.title);
   const [isExpanded, setIsExpanded] = useState(true);
@@ -17,7 +24,7 @@ export default function ChildNode({ node, level = 1 }) {
     setIsExpanded(!isExpanded);
   };
 
-  const handleDoubleClick = (e) => {
+  const handleDoubleClick = (e: MouseEvent) => {
     e.stopPropagation();
     setIsEditing(true);
     setEditTitle(node.title);
@@ -30,7 +37,7 @@ export default function ChildNode({ node, level = 1 }) {
     setIsEditing(false);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleTitleSave();
     } else if (e.key === 'Escape') {
@@ -39,21 +46,17 @@ export default function ChildNode({ node, level = 1 }) {
     }
   };
 
-  const handleAddChild = (e) => {
+  const handleAddChild = (e: MouseEvent) => {
     e.stopPropagation();
     dispatch(addChild({ parentId: node.id }));
     setIsExpanded(true);
   };
 
-  const handleDelete = (e) => {
+  const handleDelete = (e: MouseEvent) => {
     e.stopPropagation();
     if (confirm(`Delete "${node.title}" and all its children?`)) {
       dispatch(deleteNode(node.id));
     }
-  };
-
-  const isLeafChild = (child) => {
-    return !child.children || child.children.length === 0;
   };
 
   return (
@@ -118,7 +121,7 @@ export default function ChildNode({ node, level = 1 }) {
           {node.children.map((child) => (
             <div key={child.id} className="child-item">
               <div className="horizontal-connector"></div>
-              {isLeafChild(child) ? (
+              {isLeafNode(child) ? (
                 <LeafNode node={child} />
               ) : (
                 <ChildNode node={child} level={level + 1} />

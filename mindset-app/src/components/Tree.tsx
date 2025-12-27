@@ -1,12 +1,12 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { resetTree } from '../store/treeSlice';
 import ParentNode from './ParentNode';
 import ExplanationModal from './ExplanationModal';
 import './Tree.css';
 
 export default function Tree() {
-  const dispatch = useDispatch();
-  const { tree } = useSelector((state) => state.tree);
+  const dispatch = useAppDispatch();
+  const { tree } = useAppSelector((state) => state.tree);
 
   const handleReset = () => {
     if (confirm('Reset the entire roadmap to default? This cannot be undone.')) {

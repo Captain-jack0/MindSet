@@ -1,10 +1,15 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, KeyboardEvent, MouseEvent } from 'react';
+import { useAppDispatch } from '../store/hooks';
 import { openExplanation, updateNode, deleteNode } from '../store/treeSlice';
+import type { TreeNode } from '../types';
 import './LeafNode.css';
 
-export default function LeafNode({ node }) {
-  const dispatch = useDispatch();
+interface LeafNodeProps {
+  node: TreeNode;
+}
+
+export default function LeafNode({ node }: LeafNodeProps) {
+  const dispatch = useAppDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(node.title);
   const [showActions, setShowActions] = useState(false);
@@ -15,7 +20,7 @@ export default function LeafNode({ node }) {
     dispatch(openExplanation(node));
   };
 
-  const handleDoubleClick = (e) => {
+  const handleDoubleClick = (e: MouseEvent) => {
     e.stopPropagation();
     setIsEditing(true);
     setEditTitle(node.title);
@@ -28,7 +33,7 @@ export default function LeafNode({ node }) {
     setIsEditing(false);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleTitleSave();
     } else if (e.key === 'Escape') {
@@ -37,7 +42,7 @@ export default function LeafNode({ node }) {
     }
   };
 
-  const handleDelete = (e) => {
+  const handleDelete = (e: MouseEvent) => {
     e.stopPropagation();
     if (confirm(`Delete "${node.title}"?`)) {
       dispatch(deleteNode(node.id));
