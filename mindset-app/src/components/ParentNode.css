@@ -1,0 +1,125 @@
+.parent-node {
+  position: relative;
+}
+
+.parent-node-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 28px;
+  border-radius: 14px;
+  cursor: default;
+  transition: all 0.25s ease;
+  user-select: none;
+  position: relative;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: white;
+  box-shadow: 0 6px 25px rgba(26, 26, 46, 0.5);
+  min-width: 200px;
+}
+
+.parent-node-header:hover {
+  box-shadow: 0 10px 35px rgba(26, 26, 46, 0.6);
+}
+
+.parent-icon {
+  font-size: 22px;
+}
+
+.parent-title {
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.parent-title-input {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: inherit;
+  width: 200px;
+}
+
+.parent-title-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.total-count {
+  background: rgba(102, 126, 234, 0.3);
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #a0aeff;
+}
+
+.parent-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.parent-actions .action-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.parent-actions .add-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.parent-actions .add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.parent-children {
+  position: relative;
+  margin-left: 60px;
+  margin-top: 20px;
+  padding-left: 35px;
+}
+
+.main-connector {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 30px;
+  width: 4px;
+  background: linear-gradient(to bottom, #667eea, #764ba2);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+.parent-child-item {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.branch-connector {
+  position: absolute;
+  left: -35px;
+  top: 24px;
+  width: 35px;
+  height: 4px;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  border-radius: 2px;
+  opacity: 0.7;
+}

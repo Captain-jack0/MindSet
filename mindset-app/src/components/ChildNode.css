@@ -1,0 +1,177 @@
+.child-node {
+  position: relative;
+}
+
+.child-node-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  user-select: none;
+  position: relative;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.35);
+  min-width: 150px;
+}
+
+.child-node-header:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(79, 172, 254, 0.45);
+}
+
+.level-2 .child-node-header {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  box-shadow: 0 4px 15px rgba(67, 233, 123, 0.35);
+}
+
+.level-2 .child-node-header:hover {
+  box-shadow: 0 8px 25px rgba(67, 233, 123, 0.45);
+}
+
+.level-3 .child-node-header {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  box-shadow: 0 4px 15px rgba(250, 112, 154, 0.35);
+}
+
+.level-3 .child-node-header:hover {
+  box-shadow: 0 8px 25px rgba(250, 112, 154, 0.45);
+}
+
+.expand-arrow {
+  font-size: 10px;
+  transition: transform 0.25s ease;
+  display: inline-block;
+  opacity: 0.8;
+}
+
+.expand-arrow.expanded {
+  transform: rotate(90deg);
+}
+
+.child-icon {
+  font-size: 14px;
+}
+
+.child-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.child-title-input {
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: white;
+  font-size: 14px;
+  font-family: inherit;
+  width: 140px;
+}
+
+.child-title-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.children-count {
+  background: rgba(255, 255, 255, 0.25);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.child-actions {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.child-actions .action-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.child-actions .add-btn {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+.child-actions .add-btn:hover {
+  background: rgba(255, 255, 255, 0.45);
+  transform: scale(1.15);
+}
+
+.child-actions .delete-btn {
+  background: rgba(255, 100, 100, 0.4);
+  color: white;
+}
+
+.child-actions .delete-btn:hover {
+  background: rgba(255, 100, 100, 0.7);
+  transform: scale(1.15);
+}
+
+.child-children {
+  position: relative;
+  margin-left: 50px;
+  margin-top: 12px;
+  padding-left: 25px;
+}
+
+.vertical-connector {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 25px;
+  width: 3px;
+  background: linear-gradient(to bottom, #4facfe, #00f2fe);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+.level-2 .vertical-connector {
+  background: linear-gradient(to bottom, #43e97b, #38f9d7);
+}
+
+.level-3 .vertical-connector {
+  background: linear-gradient(to bottom, #fa709a, #fee140);
+}
+
+.child-item {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.horizontal-connector {
+  position: absolute;
+  left: -25px;
+  top: 22px;
+  width: 25px;
+  height: 3px;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+.level-2 .horizontal-connector {
+  background: linear-gradient(to right, #43e97b, #38f9d7);
+}
+
+.level-3 .horizontal-connector {
+  background: linear-gradient(to right, #fa709a, #fee140);
+}

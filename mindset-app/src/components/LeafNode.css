@@ -1,0 +1,99 @@
+.leaf-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  user-select: none;
+  position: relative;
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(17, 153, 142, 0.35);
+  min-width: 140px;
+}
+
+.leaf-node:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(17, 153, 142, 0.45);
+}
+
+.leaf-node.has-explanation {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  box-shadow: 0 4px 15px rgba(245, 87, 108, 0.35);
+}
+
+.leaf-node.has-explanation:hover {
+  box-shadow: 0 8px 25px rgba(245, 87, 108, 0.45);
+}
+
+.leaf-icon {
+  font-size: 14px;
+}
+
+.leaf-title {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.leaf-title-input {
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: white;
+  font-size: 14px;
+  font-family: inherit;
+  width: 140px;
+}
+
+.leaf-title-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.note-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
+
+.note-icon {
+  font-size: 12px;
+}
+
+.leaf-actions {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.leaf-actions .action-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.leaf-actions .delete-btn {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+.leaf-actions .delete-btn:hover {
+  background: rgba(255, 100, 100, 0.7);
+  transform: scale(1.15);
+}
